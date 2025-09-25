@@ -1,4 +1,4 @@
-package domain;
+package slaughterhouse.domain;
 
 public class Animal{
   private int id;

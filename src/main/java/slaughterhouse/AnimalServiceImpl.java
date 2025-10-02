@@ -4,7 +4,6 @@ import io.grpc.stub.StreamObserver;
 
 public class AnimalServiceImpl extends AnimalServiceGrpc.AnimalServiceImplBase{
 
-
   @Override
   public void getAnimalsInProduct(GetAnimalsInProductRequest request, StreamObserver<GetAnimalsInProductResponse> responseObserver) {
     responseObserver.onCompleted();

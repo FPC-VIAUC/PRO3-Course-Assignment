@@ -17,7 +17,7 @@ public class Station2Server{
 
     Server server = ServerBuilder
         .forPort(9092)
-        .addService(new Station2ServiceImpl())
+        .addService(new Station2ServiceImpl(databaseStub))
         .build();
 
     server.start();

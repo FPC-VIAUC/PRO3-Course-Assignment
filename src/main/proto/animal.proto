@@ -31,10 +31,41 @@ service Station1Service{
 message RegisterAnimalPartRequest{
   int32 weight = 1;
   string type = 2;
+  int32 animalId = 3;
+}
+
+message RegisterAnimalPartResponse{
+  int32 animalId = 1;
+}
+
+message CreateTrayRequest{
+  int32 maxWeight = 1;
+  string type = 2;
+}
+
+message CreateTrayResponse{
+  int32 id = 1;
+}
+
+message AddAnimalPartToTrayRequest{
+  int32 trayId = 1;
+  int32 animalPartId = 2;
+}
+
+message AddAnimalPartToTrayResponse{
+  bool weightLimitReached = 1;
 }
 
 service Station2Service{
-  rpc RegisterAnimalPart(RegisterAnimalPartRequest) returns (Empty);
+  rpc RegisterAnimalPart(RegisterAnimalPartRequest) returns (RegisterAnimalPartResponse);
+  rpc CreateTray(CreateTrayRequest) returns (CreateTrayResponse);
+  rpc AddAnimalPartToTray(AddAnimalPartToTrayRequest) returns (AddAnimalPartToTrayResponse);
+}
+
+message RegisterAnimalPartToTrayRequest{
+  int32 weight = 1;
+  string type = 2;
+  int32 number = 3;
 }
 
 //Station 2 END

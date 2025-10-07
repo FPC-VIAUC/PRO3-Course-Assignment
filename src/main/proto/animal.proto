@@ -36,6 +36,22 @@ service Station2Service{
 }
 //Station 2 END
 
+// Station 3 START
+message PackPartsRequest{
+  int32 id = 1;
+  int32 number = 2;
+}
+
+message HalfAnAnimalRequest{
+  repeated int32 id = 1;
+}
+
+service Station3Service{
+  rpc PackParts(PackPartsRequest) returns (Empty);
+  rpc HalfAnAnimal(HalfAnAnimalRequest) returns (Empty);
+}
+// Station 3 END
+
 // Database Server START
 message GetAnimalsInProductRequest{
   int32 productId = 1;

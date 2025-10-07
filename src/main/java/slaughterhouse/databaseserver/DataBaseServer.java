@@ -10,6 +10,7 @@ public class DataBaseServer{
     Server server = ServerBuilder
         .forPort(9090)
         .addService(new Station1ServiceImpl(dao))
+        .addService(new Station2ServiceImpl(dao))
         .build();
 
     server.start();

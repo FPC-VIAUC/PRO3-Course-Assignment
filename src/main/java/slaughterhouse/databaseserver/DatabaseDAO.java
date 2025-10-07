@@ -1,8 +1,6 @@
 package slaughterhouse.databaseserver;
 
-import slaughterhouse.domain.Animal;
-import slaughterhouse.domain.AnimalPart;
-import slaughterhouse.domain.Product;
+import slaughterhouse.domain.*;
 
 import java.util.List;
 
@@ -11,9 +9,12 @@ public interface DatabaseDAO{
   int getNextAnimalId();
 
   void addAnimalPart(AnimalPart animalPart);
+  AnimalPart getAnimalPart(int id);
   int getNextAnimalPartId();
 
-  int createTray();
+  void addTray(Tray tray);
+  Tray getTray(int id);
+  int getNextTrayId();
   void addPartToTray(int trayId, int partId);
 
   void addProduct(Product product);

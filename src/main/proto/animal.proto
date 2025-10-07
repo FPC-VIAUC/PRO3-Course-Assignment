@@ -70,7 +70,8 @@ message RegisterAnimalPartToTrayRequest{
 // Station 3 START
 message PackPartsRequest{
   int32 id = 1;
-  int32 number = 2;
+  string type = 2;
+  int32 number = 3;
 }
 
 message HalfAnAnimalRequest{

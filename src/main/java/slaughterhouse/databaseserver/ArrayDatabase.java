@@ -34,6 +34,13 @@ public class ArrayDatabase implements DatabaseDAO{
     animalParts.add(animalPart);
   }
 
+  @Override public AnimalPart getAnimalPart(int id){
+    for(AnimalPart animalPart : animalParts){
+      if(animalPart.getId() == id) return animalPart;
+    }
+    return null;
+  }
+
   @Override public int getNextAnimalPartId(){
     int max = 0;
     for(AnimalPart animalPart : animalParts){
@@ -42,12 +49,28 @@ public class ArrayDatabase implements DatabaseDAO{
     return max + 1;
   }
 
-  @Override public int createTray(){
-    throw new UnsupportedOperationException();
+  @Override public void addTray(Tray tray){
+    trays.add(tray);
+  }
+
+  @Override public Tray getTray(int id){
+    for(Tray tray : trays){
+      if(tray.getId() == id) return tray;
+    }
+    return null;
+  }
+
+  @Override public int getNextTrayId(){
+    int max = 0;
+    for(Tray tray : trays){
+      if(tray.getId() > max) max = tray.getId();
+    }
+    return max + 1;
   }
 
   @Override public void addPartToTray(int trayId, int partId){
-    throw new UnsupportedOperationException();
+    Tray tray = getTray(trayId);
+    tray.addAnimalPartId(partId);
   }
 
   @Override public void addProduct(Product product){

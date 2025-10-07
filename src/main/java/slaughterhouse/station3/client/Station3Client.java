@@ -35,6 +35,7 @@ public class Station3Client{
         case 1:
           ArrayList<Integer> idsCase1 = new ArrayList<>();
           boolean addingCase1 = true;
+          System.out.println("When you are done adding, please type -1");
           while (addingCase1)
           {
             System.out.print("Enter the ID of part: ");

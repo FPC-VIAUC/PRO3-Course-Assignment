@@ -30,7 +30,7 @@ public class Station2ServiceImpl extends Station2ServiceGrpc.Station2ServiceImpl
   @Override public void addAnimalPartToTray(AddAnimalPartToTrayRequest request, StreamObserver<AddAnimalPartToTrayResponse> responseObserver) {
     dao.addPartToTray(request.getAnimalPartId(), request.getTrayId());
 
-    Tray tray = dao.getTrayId(request.getTrayId());
+    Tray tray = dao.getTray(request.getTrayId());
     int weight = 0;
     for(int animalPartId : tray.getAnimalPartIds()){
       AnimalPart animalPart = dao.getAnimalPart(animalPartId);

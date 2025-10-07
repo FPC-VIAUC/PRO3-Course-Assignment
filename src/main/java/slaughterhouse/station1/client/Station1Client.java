@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Station1Client{
   public static void main(String[] args){
     ManagedChannel managedChannel = ManagedChannelBuilder
-        .forAddress("localhost", 9090)
+        .forAddress("localhost", 9091)
         .usePlaintext()
         .build();
 

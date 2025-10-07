@@ -19,4 +19,11 @@ public class Package extends Product{
   {
     this.animalType = animalType;
   }
+  public int getAmount(){
+    return amount;
+  }
+
+  public void setAmount(int amount){
+    this.amount = amount;
+  }
 }

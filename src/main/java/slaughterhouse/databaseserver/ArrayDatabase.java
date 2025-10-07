@@ -1,14 +1,21 @@
 package slaughterhouse.databaseserver;
 
-import slaughterhouse.domain.Animal;
+import slaughterhouse.domain.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArrayDatabase implements DatabaseDAO{
   private ArrayList<Animal> animals;
+  private ArrayList<AnimalPart> animalParts;
+  private ArrayList<Tray> trays;
+  private ArrayList<Product> products;
 
   public ArrayDatabase(){
     animals = new ArrayList<>();
+    animalParts = new ArrayList<>();
+    trays = new ArrayList<>();
+    products = new ArrayList<>();
   }
 
   @Override public void addAnimal(Animal animal){
@@ -21,5 +28,41 @@ public class ArrayDatabase implements DatabaseDAO{
       if(animal.getId() > max) max = animal.getId();
     }
     return max + 1;
+  }
+
+  @Override public void addAnimalPart(AnimalPart animalPart){
+    animalParts.add(animalPart);
+  }
+
+  @Override public int getNextAnimalPartId(){
+    int max = 0;
+    for(AnimalPart animalPart : animalParts){
+      if(animalPart.getId() > max) max = animalPart.getId();
+    }
+    return max + 1;
+  }
+
+  @Override public int createTray(){
+    throw new UnsupportedOperationException();
+  }
+
+  @Override public void addPartToTray(int trayId, int partId){
+    throw new UnsupportedOperationException();
+  }
+
+  @Override public void addProduct(Product product){
+    throw new UnsupportedOperationException();
+  }
+
+  @Override public int getNextProductId(){
+    throw new UnsupportedOperationException();
+  }
+
+  @Override public List<Integer> getProductIdsWithAnimalId(int animalId){
+    throw new UnsupportedOperationException();
+  }
+
+  @Override public List<Integer> getAnimalIdsFromProductId(int productId){
+    throw new UnsupportedOperationException();
   }
 }

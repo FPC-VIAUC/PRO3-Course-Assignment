@@ -10,7 +10,7 @@ public class Station3ServiceImpl extends Station3ServiceGrpc.Station3ServiceImpl
 {
   @Override public void packParts(
       PackPartsRequest request, StreamObserver<Empty> responseObserver) {
-    System.out.println(String.format("Product packed with: %s, amount: %d", request.getType(), request.getNumber()));
+    System.out.println(String.format("Product packed with: %d, amount: %d", request.getId(), request.getNumber()));
     responseObserver.onNext(null);
     responseObserver.onCompleted();
   }

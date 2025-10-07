@@ -33,23 +33,19 @@ public class Station3Client{
       switch(switchNumber)
       {
         case 1:
-          System.out.print("Enter the type of part: ");
-          String type = keyboard.nextLine();
+          System.out.print("Enter the ID of part: ");
+          int idCase1 = keyboard.nextInt();
+          keyboard.nextLine();
           System.out.print("Enter the number of parts: ");
           int times = keyboard.nextInt();
-
-          if(type == null) continue; // Shouldn't happen, I think
-          if(type.isEmpty()){
-            isRunning = false;
-            continue;
-          }
+          keyboard.nextLine();
 
           if (times == 0)
           {
             System.out.println("You will need at least one part!");
           }
 
-          PackPartsRequest packPartsRequest = PackPartsRequest.newBuilder().setType(type).setNumber(times).build();
+          PackPartsRequest packPartsRequest = PackPartsRequest.newBuilder().setId(idCase1).setNumber(times).build();
 
           System.out.println("Packing the products, please wait...");
           station3Stub.packParts(packPartsRequest);
@@ -62,13 +58,13 @@ public class Station3Client{
           while (adding)
           {
             System.out.print("Enter the ID of part: ");
-            int id = keyboard.nextInt();
-            if (id == -1)
+            int idCase2 = keyboard.nextInt();
+            if (idCase2 == -1)
             {
               adding = false;
               break;
             }
-            ids.add(id);
+            ids.add(idCase2);
           }
           HalfAnAnimalRequest halfAnAnimalRequest = HalfAnAnimalRequest.newBuilder().addAllId(ids).build();
           System.out.println("Packing Half-An-Animal, please wait...");

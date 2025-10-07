@@ -2,12 +2,13 @@ package slaughterhouse.station3.client;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import slaughterhouse.GetPartRequest;
-import slaughterhouse.RegisterAnimalRequest;
-import slaughterhouse.Station1ServiceGrpc;
+import slaughterhouse.HalfAnAnimalRequest;
+import slaughterhouse.PackPartsRequest;
 import slaughterhouse.Station3ServiceGrpc;
+import slaughterhouse.domain.HalfAnAnimal;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Station3Client{
@@ -26,32 +27,56 @@ public class Station3Client{
     System.out.println("Type an empty line to exit the application.");
     boolean isRunning = true;
     while(isRunning){
-      System.out.println();
-      System.out.print("Enter the type of part: ");
-      String type = keyboard.nextLine();
-      System.out.print("Enter the number of parts: ");
-      int times = keyboard.nextInt();
-
-      if(type == null) continue; // Shouldn't happen, I think
-      if(type.isEmpty()){
-        isRunning = false;
-        continue;
-      }
-
-      if (times == 0)
+      System.out.println("Do you want to: \n 1) Pack a product \n 2) Pack Half-An-Animal");
+      int switchNumber = keyboard.nextInt();
+      keyboard.nextLine();
+      switch(switchNumber)
       {
-        System.out.println("You will need at least one part!");
+        case 1:
+          System.out.print("Enter the type of part: ");
+          String type = keyboard.nextLine();
+          System.out.print("Enter the number of parts: ");
+          int times = keyboard.nextInt();
+
+          if(type == null) continue; // Shouldn't happen, I think
+          if(type.isEmpty()){
+            isRunning = false;
+            continue;
+          }
+
+          if (times == 0)
+          {
+            System.out.println("You will need at least one part!");
+          }
+
+          PackPartsRequest packPartsRequest = PackPartsRequest.newBuilder().setType(type).setNumber(times).build();
+
+          System.out.println("Packing the products, please wait...");
+          station3Stub.packParts(packPartsRequest);
+          break;
+
+        case 2:
+          System.out.println("When you are done adding, please type -1");
+          boolean adding = true;
+          ArrayList<Integer> ids = new ArrayList<>();
+          while (adding)
+          {
+            System.out.print("Enter the ID of part: ");
+            int id = keyboard.nextInt();
+            if (id == -1)
+            {
+              adding = false;
+              break;
+            }
+            ids.add(id);
+          }
+          HalfAnAnimalRequest halfAnAnimalRequest = HalfAnAnimalRequest.newBuilder().addAllId(ids).build();
+          System.out.println("Packing Half-An-Animal, please wait...");
+          station3Stub.halfAnAnimal(halfAnAnimalRequest);
+        }
       }
+      keyboard.close();
+      managedChannel.shutdown();
 
-      GetPartRequest request = GetPartRequest.newBuilder().setType(type).build();
-
-      System.out.println("Packing the products, please wait...");
-      station3Stub.getPart(request);
     }
-
-    keyboard.close();
-    managedChannel.shutdown();
-  }
-
-  //Half an animal - A lot of different parts
 }

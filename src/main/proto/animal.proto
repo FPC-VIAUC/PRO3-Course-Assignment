@@ -26,21 +26,6 @@ service Station1Service{
 
 // Station 1 END
 
-
-
-// Station 3 START
-message GetPartRequest{
-  string type = 1;
-}
-
-service Station3Service{
-  rpc GetPart(GetPartRequest) returns (Empty);
-}
-
-// Station 3 END
-
-// Database Server START
-
 //Station 2 START
 
 message RegisterAnimalPartRequest{
@@ -53,6 +38,25 @@ service Station2Service{
 }
 
 //Station 2 END
+
+// Station 3 START
+message PackPartsRequest{
+  string type = 1;
+  int32 number = 2;
+}
+
+message HalfAnAnimalRequest{
+  repeated int32 id = 1;
+}
+
+service Station3Service{
+  rpc PackParts(PackPartsRequest) returns (Empty);
+  rpc HalfAnAnimal(HalfAnAnimalRequest) returns (Empty);
+}
+
+// Station 3 END
+
+// Database Server START
 
 message GetAnimalsInProductRequest{
   int32 productId = 1;

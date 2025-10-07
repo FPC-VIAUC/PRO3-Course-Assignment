@@ -4,7 +4,6 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import slaughterhouse.Station1ServiceGrpc;
 import slaughterhouse.Station2ServiceGrpc;
 
 public class Station2Server{
@@ -18,7 +17,7 @@ public class Station2Server{
 
     Server server = ServerBuilder
         .forPort(9092)
-        .addService(new Station2ServiceImpl())
+        .addService(new Station2ServiceImpl(databaseStub))
         .build();
 
     server.start();

@@ -7,6 +7,11 @@ import slaughterhouse.*;
 public class Station2ServiceImpl extends Station2ServiceGrpc.Station2ServiceImplBase
 {
   private Station2ServiceGrpc.Station2ServiceBlockingStub databaseStub;
+
+  public Station2ServiceImpl(Station2ServiceGrpc.Station2ServiceBlockingStub databaseStub){
+    this.databaseStub = databaseStub;
+  }
+
   @Override public void registerAnimalPart(RegisterAnimalPartRequest request,
       StreamObserver<RegisterAnimalPartResponse> responseObserver)
   {
@@ -31,6 +36,7 @@ public class Station2ServiceImpl extends Station2ServiceGrpc.Station2ServiceImpl
     databaseStub.addAnimalPartToTray(request);
     responseObserver.onNext(null);
     responseObserver.onCompleted();
+    System.out.println(databaseStub);
   }
 
 }

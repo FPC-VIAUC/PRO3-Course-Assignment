@@ -33,21 +33,25 @@ public class Station3Client{
       switch(switchNumber)
       {
         case 1:
-          System.out.print("Enter the ID of the part: ");
-          int idCase1 = keyboard.nextInt();
+          ArrayList<Integer> idsCase1 = new ArrayList<>();
+          boolean addingCase1 = true;
+          System.out.println("When you are done adding, please type -1");
+          while (addingCase1)
+          {
+            System.out.print("Enter the ID of part: ");
+            int idCase1 = keyboard.nextInt();
+            if (idCase1 == -1)
+            {
+              addingCase1 = false;
+              break;
+            }
+            idsCase1.add(idCase1);
+          }
           keyboard.nextLine();
           System.out.print("Enter the type of the part: ");
           String animalPartTypeCase1 = keyboard.nextLine();
-          System.out.print("Enter the number of parts: ");
-          int times = keyboard.nextInt();
-          keyboard.nextLine();
 
-          if (times == 0)
-          {
-            System.out.println("You will need at least one part!");
-          }
-
-          PackPartsRequest packPartsRequest = PackPartsRequest.newBuilder().setId(idCase1).setType(animalPartTypeCase1).setNumber(times).build();
+          PackPartsRequest packPartsRequest = PackPartsRequest.newBuilder().addAllId(idsCase1).setType(animalPartTypeCase1).setNumber(idsCase1.size()).build();
 
           System.out.println("Packing the products, please wait...");
           station3Stub.packParts(packPartsRequest);
@@ -55,20 +59,20 @@ public class Station3Client{
 
         case 2:
           System.out.println("When you are done adding, please type -1");
-          boolean adding = true;
-          ArrayList<Integer> ids = new ArrayList<>();
-          while (adding)
+          boolean addingCase2 = true;
+          ArrayList<Integer> idsCase2 = new ArrayList<>();
+          while (addingCase2)
           {
             System.out.print("Enter the ID of part: ");
             int idCase2 = keyboard.nextInt();
             if (idCase2 == -1)
             {
-              adding = false;
+              addingCase2 = false;
               break;
             }
-            ids.add(idCase2);
+            idsCase2.add(idCase2);
           }
-          HalfAnAnimalRequest halfAnAnimalRequest = HalfAnAnimalRequest.newBuilder().addAllId(ids).build();
+          HalfAnAnimalRequest halfAnAnimalRequest = HalfAnAnimalRequest.newBuilder().addAllId(idsCase2).build();
           System.out.println("Packing Half-An-Animal, please wait...");
           station3Stub.halfAnAnimal(halfAnAnimalRequest);
         }

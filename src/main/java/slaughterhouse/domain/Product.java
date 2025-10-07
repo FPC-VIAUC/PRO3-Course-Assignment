@@ -22,8 +22,16 @@ public class Product{
     this.id = id;
   }
 
+  public ArrayList<Integer> getAnimalPartIds(){
+    return animalPartIds;
+  }
+
   public void addId(int id)
   {
     animalPartIds.add(id);
+  }
+
+  @Override public String toString(){
+    return "Product{" + "id=" + id + ", animalPartIds=" + animalPartIds + '}';
   }
 }

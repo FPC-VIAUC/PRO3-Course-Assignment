@@ -26,6 +26,19 @@ service Station1Service{
 
 // Station 1 END
 
+
+
+// Station 3 START
+message GetPartRequest{
+  string type = 1;
+}
+
+service Station3Service{
+  rpc GetPart(GetPartRequest) returns (Empty);
+}
+
+// Station 3 END
+
 // Database Server START
 
 //Station 2 START

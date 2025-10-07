@@ -32,4 +32,9 @@ public class HalfAnAnimal extends Product{
   {
     this.amount = amount;
   }
+
+  @Override public String toString(){
+    return "HalfAnAnimal{" + "type='" + type + '\'' + ", amount=" + amount
+        + '}';
+  }
 }

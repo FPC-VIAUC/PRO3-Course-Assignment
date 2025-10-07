@@ -50,4 +50,9 @@ public class Tray{
   public void addAnimalPartId(int id){
     animalPartIds.add(id);
   }
+
+  @Override public String toString(){
+    return "Tray{" + "id=" + id + ", type='" + type + '\'' + ", weightCapacity="
+        + weightCapacity + ", animalPartIds=" + animalPartIds + '}';
+  }
 }

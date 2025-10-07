@@ -52,4 +52,9 @@ public class AnimalPart{
   public void setAnimalId(int animalId){
     this.animalId = animalId;
   }
+
+  @Override public String toString(){
+    return "AnimalPart{" + "id=" + id + ", weight=" + weight + ", type='" + type
+        + '\'' + ", animalId=" + animalId + '}';
+  }
 }

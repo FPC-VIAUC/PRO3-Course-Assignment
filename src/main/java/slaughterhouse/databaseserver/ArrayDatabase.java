@@ -18,8 +18,29 @@ public class ArrayDatabase implements DatabaseDAO{
     products = new ArrayList<>();
   }
 
+  @Override public void printAll(){
+    System.out.println("=================================================");
+
+    for(Animal animal : animals){
+      System.out.println(animal);
+    }
+
+    for(AnimalPart animalPart : animalParts){
+      System.out.println(animalPart);
+    }
+
+    for(Tray tray : trays){
+      System.out.println(tray);
+    }
+
+    for(Product product : products){
+      System.out.println(product);
+    }
+  }
+
   @Override public void addAnimal(Animal animal){
     animals.add(animal);
+    printAll();
   }
 
   @Override public Animal getAnimal(int id){
@@ -36,6 +57,7 @@ public class ArrayDatabase implements DatabaseDAO{
 
   @Override public void addAnimalPart(AnimalPart animalPart){
     animalParts.add(animalPart);
+    printAll();
   }
 
   @Override public AnimalPart getAnimalPart(int id){
@@ -55,6 +77,7 @@ public class ArrayDatabase implements DatabaseDAO{
 
   @Override public void addTray(Tray tray){
     trays.add(tray);
+    printAll();
   }
 
   @Override public Tray getTray(int id){
@@ -75,10 +98,12 @@ public class ArrayDatabase implements DatabaseDAO{
   @Override public void addPartToTray(int trayId, int partId){
     Tray tray = getTray(trayId);
     tray.addAnimalPartId(partId);
+    printAll();
   }
 
   @Override public void addProduct(Product product){
     products.add(product);
+    printAll();
   }
 
   @Override public List<Product> getAllProducts(){

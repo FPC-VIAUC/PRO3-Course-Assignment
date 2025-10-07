@@ -5,6 +5,8 @@ import slaughterhouse.domain.*;
 import java.util.List;
 
 public interface DatabaseDAO{
+  void printAll();
+
   void addAnimal(Animal animal);
   Animal getAnimal(int id);
   int getNextAnimalId();

@@ -78,7 +78,7 @@ public class ArrayDatabase implements DatabaseDAO{
   }
 
   @Override public void addProduct(Product product){
-    throw new UnsupportedOperationException();
+    products.add(product);
   }
 
   @Override public List<Product> getAllProducts(){
@@ -90,6 +90,10 @@ public class ArrayDatabase implements DatabaseDAO{
   }
 
   @Override public int getNextProductId(){
-    throw new UnsupportedOperationException();
+    int max = 0;
+    for(Product product : products){
+      if(product.getId() > max) max = product.getId();
+    }
+    return max + 1;
   }
 }

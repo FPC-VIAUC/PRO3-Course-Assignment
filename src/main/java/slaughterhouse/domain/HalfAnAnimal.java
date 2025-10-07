@@ -1,12 +1,16 @@
 package slaughterhouse.domain;
 
+import java.util.List;
+
 public class HalfAnAnimal extends Product{
 
   private String type;
   private int amount;
 
-  public HalfAnAnimal(int id){
+  public HalfAnAnimal(int id, List<Integer> productIds){
     super(id);
+    for(int i = 0; i < productIds.size(); i++)
+      super.addId(productIds.get(i));
   }
 
   public String getType()

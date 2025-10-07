@@ -13,7 +13,7 @@ public class Station2Client
   public static void main(String[] args)
   {
     ManagedChannel managedChannel = ManagedChannelBuilder.forAddress(
-        "localhost", 9090).usePlaintext().build();
+        "localhost", 9092).usePlaintext().build();
 
     Station2ServiceGrpc.Station2ServiceBlockingStub station2Stub = Station2ServiceGrpc.newBlockingStub(managedChannel);
 
@@ -34,17 +34,6 @@ public class Station2Client
         continue;
       }
 
-      System.out.println();
-      System.out.print("Enter the type of the animalpart");
-      String input1 = keyboard.nextLine();
-      if (input1 == null)
-        continue; // Shouldn't happen, I think
-      if (input1.isEmpty())
-      {
-        isRunning = false;
-        continue;
-      }
-
       int typedNumber;
       try{
         typedNumber = Integer.parseInt(input);
@@ -54,6 +43,18 @@ public class Station2Client
       }
       if(typedNumber < 0){
         System.out.println("Weight cannot be a negative number, try again.");
+        continue;
+      }
+
+
+      System.out.println();
+      System.out.print("Enter the type of the animalpart: ");
+      String input1 = keyboard.nextLine();
+      if (input1 == null)
+        continue; // Shouldn't happen, I think
+      if (input1.isEmpty())
+      {
+        isRunning = false;
         continue;
       }
 
@@ -70,7 +71,7 @@ public class Station2Client
 
       int typedId;
       try{
-        typedId = Integer.parseInt(input);
+        typedId = Integer.parseInt(input2);
       } catch(NumberFormatException e){
         System.out.println("Not a valid number, try again.");
         continue;
@@ -90,8 +91,6 @@ public class Station2Client
       station2Stub.registerAnimalPart(request);
 
     }
-
-
     keyboard.close();
     managedChannel.shutdown();
   }

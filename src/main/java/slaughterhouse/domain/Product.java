@@ -25,4 +25,9 @@ public class Product{
   public ArrayList<Integer> getAnimalPartIds(){
     return animalPartIds;
   }
+
+  public void addId(int id)
+  {
+    animalPartIds.add(id);
+  }
 }

@@ -47,6 +47,7 @@ public class Station3Client{
             }
             idsCase1.add(idCase1);
           }
+          keyboard.nextLine();
           System.out.print("Enter the type of the part: ");
           String animalPartTypeCase1 = keyboard.nextLine();
 

@@ -7,6 +7,10 @@
   <name>Archetype - CourseAssignment</name>
   <url>http://maven.apache.org</url>
 
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>io.grpc</groupId>

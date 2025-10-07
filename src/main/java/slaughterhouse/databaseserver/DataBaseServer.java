@@ -1,13 +1,15 @@
-package slaughterhouse.station1.server;
+package slaughterhouse.databaseserver;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
-public class Station1Server{
+public class DataBaseServer{
   public static void main(String[] args) throws Exception{
+    DatabaseDAO dao = new ArrayDatabase();
+
     Server server = ServerBuilder
-        .forPort(9091)
-        .addService(new Station1ServiceImpl())
+        .forPort(9090)
+        .addService(new Station1ServiceImpl(dao))
         .build();
 
     server.start();

@@ -26,4 +26,9 @@ public class Package extends Product{
   public void setAmount(int amount){
     this.amount = amount;
   }
+
+  @Override public String toString(){
+    return "Package{" + "animalType='" + animalType + '\'' + ", amount="
+        + amount + '}';
+  }
 }

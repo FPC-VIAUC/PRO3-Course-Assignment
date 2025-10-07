@@ -29,4 +29,8 @@ public class Animal{
   {
     this.weight = weight;
   }
+
+  @Override public String toString(){
+    return "Animal{" + "id=" + id + ", weight=" + weight + '}';
+  }
 }

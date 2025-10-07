@@ -30,4 +30,8 @@ public class Product{
   {
     animalPartIds.add(id);
   }
+
+  @Override public String toString(){
+    return "Product{" + "id=" + id + ", animalPartIds=" + animalPartIds + '}';
+  }
 }

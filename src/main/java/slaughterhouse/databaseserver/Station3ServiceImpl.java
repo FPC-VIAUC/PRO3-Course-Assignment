@@ -24,7 +24,7 @@ public class Station3ServiceImpl extends Station3ServiceGrpc.Station3ServiceImpl
 
   @Override public void halfAnAnimal(HalfAnAnimalRequest request, StreamObserver<Empty> responseObserver)
   {
-    //dao.addProduct(new HalfAnAnimal(dao.getNextProductId(), request.getIdList()));
+    dao.addProduct(new HalfAnAnimal(dao.getNextProductId(), request.getIdList()));
     responseObserver.onNext(null);
     responseObserver.onCompleted();
   }

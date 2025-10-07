@@ -5,10 +5,8 @@ public class HalfAnAnimal extends Product{
   private String type;
   private int amount;
 
-  public HalfAnAnimal(int id, String type, int amount){
+  public HalfAnAnimal(int id){
     super(id);
-    this.type = type;
-    this.amount = amount;
   }
 
   public String getType()

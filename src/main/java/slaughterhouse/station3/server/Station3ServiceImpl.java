@@ -8,9 +8,17 @@ import slaughterhouse.Station3ServiceGrpc;
 
 public class Station3ServiceImpl extends Station3ServiceGrpc.Station3ServiceImplBase
 {
+  Station3ServiceGrpc.Station3ServiceBlockingStub databaseStub;
+
+  public Station3ServiceImpl(Station3ServiceGrpc.Station3ServiceBlockingStub databaseStub)
+  {
+    this.databaseStub = databaseStub;
+  }
+
   @Override public void packParts(
       PackPartsRequest request, StreamObserver<Empty> responseObserver) {
     System.out.println(String.format("Product packed with: %d, amount: %d", request.getId(), request.getNumber()));
+    databaseStub.packParts(request);
     responseObserver.onNext(null);
     responseObserver.onCompleted();
   }
@@ -22,6 +30,7 @@ public class Station3ServiceImpl extends Station3ServiceGrpc.Station3ServiceImpl
     {
       System.out.println(request.getId(i));
     }
+    databaseStub.halfAnAnimal(request);
     responseObserver.onNext(null);
     responseObserver.onCompleted();
   }

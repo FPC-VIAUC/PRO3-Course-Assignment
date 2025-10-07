@@ -28,6 +28,19 @@ service Station1Service{
 
 // Database Server START
 
+//Station 2 START
+
+message RegisterAnimalPartRequest{
+  int32 weight = 1;
+  string type = 2;
+}
+
+service Station2Service{
+  rpc RegisterAnimalPart(RegisterAnimalPartRequest) returns (Empty);
+}
+
+//Station 2 END
+
 message GetAnimalsInProductRequest{
   int32 productId = 1;
 }

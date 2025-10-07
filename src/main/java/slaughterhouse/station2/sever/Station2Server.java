@@ -4,7 +4,6 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import slaughterhouse.Station1ServiceGrpc;
 import slaughterhouse.Station2ServiceGrpc;
 
 public class Station2Server{

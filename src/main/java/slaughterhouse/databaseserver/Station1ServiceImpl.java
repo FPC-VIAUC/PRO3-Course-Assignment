@@ -1,7 +1,6 @@
 package slaughterhouse.databaseserver;
 
 import io.grpc.stub.StreamObserver;
-import org.checkerframework.checker.units.qual.A;
 import slaughterhouse.Empty;
 import slaughterhouse.RegisterAnimalRequest;
 import slaughterhouse.Station1ServiceGrpc;

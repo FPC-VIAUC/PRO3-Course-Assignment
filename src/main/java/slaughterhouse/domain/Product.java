@@ -21,4 +21,8 @@ public class Product{
   {
     this.id = id;
   }
+
+  public ArrayList<Integer> getAnimalPartIds(){
+    return animalPartIds;
+  }
 }

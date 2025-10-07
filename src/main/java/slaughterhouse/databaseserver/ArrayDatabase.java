@@ -22,6 +22,10 @@ public class ArrayDatabase implements DatabaseDAO{
     animals.add(animal);
   }
 
+  @Override public Animal getAnimal(int id){
+    return null;
+  }
+
   @Override public int getNextAnimalId(){
     int max = 0;
     for(Animal animal : animals){
@@ -77,15 +81,15 @@ public class ArrayDatabase implements DatabaseDAO{
     throw new UnsupportedOperationException();
   }
 
+  @Override public List<Product> getAllProducts(){
+    return List.of();
+  }
+
+  @Override public Product getProduct(int id){
+    return null;
+  }
+
   @Override public int getNextProductId(){
-    throw new UnsupportedOperationException();
-  }
-
-  @Override public List<Integer> getProductIdsWithAnimalId(int animalId){
-    throw new UnsupportedOperationException();
-  }
-
-  @Override public List<Integer> getAnimalIdsFromProductId(int productId){
     throw new UnsupportedOperationException();
   }
 }

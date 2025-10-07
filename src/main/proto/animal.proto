@@ -101,7 +101,7 @@ message GetProductsFromAnimalResponse{
   repeated ProductDTO products = 1;
 }
 
-service AnimalService{
+service SlaughterhouseService{
   rpc GetAnimalsInProduct(GetAnimalsInProductRequest) returns (GetAnimalsInProductResponse);
   rpc GetProductsFromAnimal(GetProductsFromAnimalRequest) returns (GetProductsFromAnimalResponse);
 }

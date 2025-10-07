@@ -21,4 +21,9 @@ public class Product{
   {
     this.id = id;
   }
+
+  public void addId(int id)
+  {
+    animalPartIds.add(id);
+  }
 }

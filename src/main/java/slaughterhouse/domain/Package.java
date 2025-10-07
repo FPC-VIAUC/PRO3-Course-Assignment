@@ -1,20 +1,30 @@
 package slaughterhouse.domain;
 
 public class Package extends Product{
-  private String animalType;
+  private String animalPartType;
+  private int amount;
 
-  public Package(int id, String animalType){
+  public Package(int id, String animalPartType, int amount){
     super(id);
-    this.animalType = animalType;
+    this.animalPartType = animalPartType;
+    this.amount = amount;
   }
 
-  public String getAnimalType()
+  public String getAnimalPartType()
   {
-    return animalType;
+    return animalPartType;
   }
 
-  public void setAnimalType(String animalType)
+  public void setAnimalPartType(String animalPartType)
   {
-    this.animalType = animalType;
+    this.animalPartType = animalPartType;
+  }
+
+  public int getAmount(){
+    return amount;
+  }
+
+  public void setAmount(int amount){
+    this.amount = amount;
   }
 }

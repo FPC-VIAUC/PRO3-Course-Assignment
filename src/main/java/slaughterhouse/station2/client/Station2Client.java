@@ -57,14 +57,38 @@ public class Station2Client
         continue;
       }
 
+      System.out.println();
+      System.out.print("Enter the ID of the animal: ");
+      String input2 = keyboard.nextLine();
+      if (input2 == null)
+        continue; // Shouldn't happen, I think
+      if (input2.isEmpty())
+      {
+        isRunning = false;
+        continue;
+      }
+
+      int typedId;
+      try{
+        typedId = Integer.parseInt(input);
+      } catch(NumberFormatException e){
+        System.out.println("Not a valid number, try again.");
+        continue;
+      }
+      if(typedId < 0){
+        System.out.println("Weight cannot be a negative number, try again.");
+        continue;
+      }
 
       RegisterAnimalPartRequest request = RegisterAnimalPartRequest.newBuilder()
           .setWeight(typedNumber)
           .setType(input1)
+          .setAnimalId(typedId)
           .build();
 
       System.out.println("Registering animal, please wait...");
       station2Stub.registerAnimalPart(request);
+
     }
 
 

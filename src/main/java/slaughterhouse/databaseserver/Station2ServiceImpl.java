@@ -1,7 +1,6 @@
 package slaughterhouse.databaseserver;
 
 import io.grpc.stub.StreamObserver;
-import slaughterhouse.Empty;
 import slaughterhouse.RegisterAnimalPartRequest;
 import slaughterhouse.RegisterAnimalPartResponse;
 import slaughterhouse.Station2ServiceGrpc;

@@ -2,8 +2,8 @@ package slaughterhouse.station1.client;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import slaughterhouse.AnimalDTO;
-import slaughterhouse.AnimalServiceGrpc;
+import slaughterhouse.RegisterAnimalRequest;
+import slaughterhouse.Station1ServiceGrpc;
 
 import java.util.Scanner;
 
@@ -14,8 +14,8 @@ public class Station1Client{
         .usePlaintext()
         .build();
 
-    AnimalServiceGrpc.AnimalServiceBlockingStub animalStub =
-        AnimalServiceGrpc.newBlockingStub(managedChannel);
+    Station1ServiceGrpc.Station1ServiceBlockingStub station1Stub =
+        Station1ServiceGrpc.newBlockingStub(managedChannel);
 
     Scanner keyboard = new Scanner(System.in);
 
@@ -43,13 +43,12 @@ public class Station1Client{
         continue;
       }
 
-      AnimalDTO request = AnimalDTO.newBuilder()
-          .setId(0)
+      RegisterAnimalRequest request = RegisterAnimalRequest.newBuilder()
           .setWeight(typedNumber)
           .build();
 
       System.out.println("Registering animal, please wait...");
-      animalStub.registerAnimal(request);
+      station1Stub.registerAnimal(request);
     }
 
     keyboard.close();

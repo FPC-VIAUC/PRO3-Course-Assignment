@@ -24,15 +24,19 @@ service Station1Service{
 }
 // Station 1 END
 
-
 //Station 2 START
 message RegisterAnimalPartRequest{
   int32 weight = 1;
   string type = 2;
+  int32 animalId = 3;
+}
+
+message RegisterAnimalPartResponse{
+  int32 id = 1;
 }
 
 service Station2Service{
-  rpc RegisterAnimalPart(RegisterAnimalPartRequest) returns (Empty);
+  rpc RegisterAnimalPart(RegisterAnimalPartRequest) returns (RegisterAnimalPartResponse);
 }
 //Station 2 END
 

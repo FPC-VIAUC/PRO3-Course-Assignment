@@ -69,7 +69,7 @@ message RegisterAnimalPartToTrayRequest{
 
 // Station 3 START
 message PackPartsRequest{
-  int32 id = 1;
+  repeated int32 id = 1;
   string type = 2;
   int32 number = 3;
 }

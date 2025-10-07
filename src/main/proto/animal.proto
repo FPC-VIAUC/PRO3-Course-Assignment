@@ -15,7 +15,6 @@ message AnimalDTO{
 }
 
 // Station 1 START
-
 message RegisterAnimalRequest{
   int32 weight = 1;
 }
@@ -23,11 +22,9 @@ message RegisterAnimalRequest{
 service Station1Service{
   rpc RegisterAnimal(RegisterAnimalRequest) returns (Empty);
 }
-
 // Station 1 END
 
 //Station 2 START
-
 message RegisterAnimalPartRequest{
   int32 weight = 1;
   string type = 2;
@@ -35,7 +32,8 @@ message RegisterAnimalPartRequest{
 }
 
 message RegisterAnimalPartResponse{
-  int32 animalId = 1;
+  int32 id = 1;
+  int32 animalId = 2;
 }
 
 message CreateTrayRequest{
@@ -67,12 +65,11 @@ message RegisterAnimalPartToTrayRequest{
   string type = 2;
   int32 number = 3;
 }
-
 //Station 2 END
 
 // Station 3 START
 message PackPartsRequest{
-  string type = 1;
+  int32 id = 1;
   int32 number = 2;
 }
 
@@ -84,11 +81,9 @@ service Station3Service{
   rpc PackParts(PackPartsRequest) returns (Empty);
   rpc HalfAnAnimal(HalfAnAnimalRequest) returns (Empty);
 }
-
 // Station 3 END
 
 // Database Server START
-
 message GetAnimalsInProductRequest{
   int32 productId = 1;
 }
@@ -109,5 +104,4 @@ service AnimalService{
   rpc GetAnimalsInProduct(GetAnimalsInProductRequest) returns (GetAnimalsInProductResponse);
   rpc GetProductsFromAnimal(GetProductsFromAnimalRequest) returns (GetProductsFromAnimalResponse);
 }
-
 // Database Server END

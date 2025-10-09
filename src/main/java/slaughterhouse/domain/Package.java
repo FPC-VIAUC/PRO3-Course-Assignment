@@ -1,11 +1,13 @@
 package slaughterhouse.domain;
 
+import java.util.List;
+
 public class Package extends Product{
   private String animalType;
   private int amount;
 
-  public Package(int id, String animalType, int amount){
-    super(id);
+  public Package(int id, List<Integer> animalPartIds, String animalType, int amount){
+    super(id, animalPartIds);
     this.animalType = animalType;
     this.amount = amount;
   }

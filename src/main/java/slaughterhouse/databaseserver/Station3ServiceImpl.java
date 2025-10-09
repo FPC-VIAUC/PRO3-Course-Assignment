@@ -17,7 +17,7 @@ public class Station3ServiceImpl extends Station3ServiceGrpc.Station3ServiceImpl
 
   @Override public void packParts(
       PackPartsRequest request, StreamObserver<Empty> responseObserver) {
-    dao.addProduct(new Package(dao.getNextProductId(), request.getType(), request.getNumber()));
+    dao.addProduct(new Package(dao.getNextProductId(), request.getIdList(), request.getType(), request.getNumber()));
     responseObserver.onNext(null);
     responseObserver.onCompleted();
   }

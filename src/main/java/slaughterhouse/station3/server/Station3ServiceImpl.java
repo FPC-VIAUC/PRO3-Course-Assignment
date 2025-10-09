@@ -17,7 +17,7 @@ public class Station3ServiceImpl extends Station3ServiceGrpc.Station3ServiceImpl
 
   @Override public void packParts(
       PackPartsRequest request, StreamObserver<Empty> responseObserver) {
-    System.out.println(String.format("Product packed with: %d, type: %s amount: %d", request.getId(), request.getType(), request.getNumber()));
+    //System.out.println(String.format("Product packed with: %d, type: %s amount: %d", request.getId(), request.getType(), request.getNumber()));
     databaseStub.packParts(request);
     responseObserver.onNext(null);
     responseObserver.onCompleted();

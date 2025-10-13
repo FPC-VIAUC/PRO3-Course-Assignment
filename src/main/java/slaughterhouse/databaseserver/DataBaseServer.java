@@ -12,6 +12,7 @@ public class DataBaseServer{
         .addService(new Station1ServiceImpl(dao))
         .addService(new Station2ServiceImpl(dao))
         .addService(new Station3ServiceImpl(dao))
+        .addService(new SlaughterHouseServiceImpl(dao))
         .build();
 
     server.start();

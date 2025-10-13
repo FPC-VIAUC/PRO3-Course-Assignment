@@ -44,6 +44,9 @@ public class ArrayDatabase implements DatabaseDAO{
   }
 
   @Override public Animal getAnimal(int id){
+    for(Animal animal : animals){
+      if(animal.getId() == id) return animal;
+    }
     return null;
   }
 
@@ -107,10 +110,13 @@ public class ArrayDatabase implements DatabaseDAO{
   }
 
   @Override public List<Product> getAllProducts(){
-    return List.of();
+    return products;
   }
 
   @Override public Product getProduct(int id){
+    for(Product product : products){
+      if(product.getId() == id) return product;
+    }
     return null;
   }
 

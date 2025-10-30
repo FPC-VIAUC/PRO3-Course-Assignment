@@ -2,14 +2,22 @@ package slaughterhouse.domain;
 
 import java.time.LocalDate;
 
-public class Animal{
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.hateoas.RepresentationModel;
+
+public class Animal extends RepresentationModel<Animal>{
   private int id;
   private int weight;
   private String origin;
   private LocalDate date;
 
-  public Animal(int id, int weight, String origin, LocalDate date)
-  {
+  @JsonCreator
+  public Animal(
+      @JsonProperty("id") int id,
+      @JsonProperty("weight") int weight,
+      @JsonProperty("origin") String origin,
+      @JsonProperty("date") LocalDate date){
     this.id = id;
     this.weight = weight;
     this.origin = origin;

@@ -5,12 +5,17 @@ import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import slaughterhouse.domain.Animal;
+
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class DataBaseServer{
   private static DatabaseDAO dao = new ArrayDatabase();
 
   public static void main(String[] args) throws Exception{
+    dao.addAnimal(new Animal(dao.getNextAnimalId(), 10, "Danmark", LocalDate.now()));
+
     Thread grpcServer = new Thread(() -> {
       Server server = ServerBuilder
           .forPort(9090)

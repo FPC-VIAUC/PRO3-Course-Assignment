@@ -13,6 +13,6 @@ public class WebAPI{
 
   @GetMapping("/hello")
   public ResponseEntity getHello(){
-    return new ResponseEntity ("Hello", HttpStatus.OK);
+    return new ResponseEntity (dao.getAnimal(1), HttpStatus.OK);
   }
 }

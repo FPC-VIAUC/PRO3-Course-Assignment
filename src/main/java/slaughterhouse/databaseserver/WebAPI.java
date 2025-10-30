@@ -23,6 +23,21 @@ public class WebAPI{
     return new ResponseEntity (dao.getAnimal(1), HttpStatus.OK);
   }
 
+
+  @GetMapping("/animals")
+  public ResponseEntity<List<Animal>> getAnimalsByOrigin(@RequestParam("origin") String origin){
+    List<Animal> animals = new ArrayList<>();
+
+    for (Animal animal : dao.getAnimals()) {
+      if(animal.getOrigin().equalsIgnoreCase(origin)){
+        animals.add(animal);
+      }
+
+    }
+
+    return new ResponseEntity<List<Animal>> (animals, HttpStatus.OK);
+  }
+
   @GetMapping("/animals")
   public ResponseEntity<List<Animal>> getAnimalsFromDate(@RequestParam("date") String date)
   {

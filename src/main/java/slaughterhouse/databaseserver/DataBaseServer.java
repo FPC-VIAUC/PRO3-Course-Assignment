@@ -15,6 +15,10 @@ public class DataBaseServer{
 
   public static void main(String[] args) throws Exception{
     dao.addAnimal(new Animal(dao.getNextAnimalId(), 10, "Danmark", LocalDate.now()));
+    dao.addAnimal(new Animal(dao.getNextAnimalId(), 20, "Sverige", LocalDate.now()));
+    dao.addAnimal(new Animal(dao.getNextAnimalId(), 30, "Norge", LocalDate.now()));
+    dao.addAnimal(new Animal(dao.getNextAnimalId(), 40, "Danmark", LocalDate.now()));
+
 
     Thread grpcServer = new Thread(() -> {
       Server server = ServerBuilder

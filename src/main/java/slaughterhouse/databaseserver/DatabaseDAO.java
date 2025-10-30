@@ -9,6 +9,7 @@ public interface DatabaseDAO{
 
   void addAnimal(Animal animal);
   Animal getAnimal(int id);
+  List<Animal> getAnimals();
   int getNextAnimalId();
 
   void addAnimalPart(AnimalPart animalPart);

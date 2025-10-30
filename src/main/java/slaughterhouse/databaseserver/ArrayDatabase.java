@@ -50,6 +50,14 @@ public class ArrayDatabase implements DatabaseDAO{
     return null;
   }
 
+  @Override public List<Animal> getAnimals(){
+    List<Animal> allAnimals = new ArrayList<>();
+    for(Animal animal : animals){
+      allAnimals.add(animal);
+    }
+    return allAnimals;
+  }
+
   @Override public int getNextAnimalId(){
     int max = 0;
     for(Animal animal : animals){

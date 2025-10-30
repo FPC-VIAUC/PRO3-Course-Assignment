@@ -50,7 +50,7 @@ public class WebAPI{
     return new ResponseEntity (animalsFromDate, HttpStatus.OK);
   }
 
-  @GetMapping("/animals/{id}")  // 1 point
+  @GetMapping("/animals/{id}")
   public ResponseEntity getAnimal(@PathVariable int id){
     return new ResponseEntity (dao.getAnimal(id), HttpStatus.OK);
   }

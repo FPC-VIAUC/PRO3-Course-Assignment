@@ -43,8 +43,17 @@ public class Station1Client{
         continue;
       }
 
+      System.out.print("Enter the origin of the animal: ");
+      String origin = keyboard.nextLine();
+      if(origin == null) continue; // Shouldn't happen, I think
+      if(origin.isEmpty()){
+        isRunning = false;
+        continue;
+      }
+
       RegisterAnimalRequest request = RegisterAnimalRequest.newBuilder()
           .setWeight(typedNumber)
+          .setOrigin(origin)
           .build();
 
       System.out.println("Registering animal, please wait...");

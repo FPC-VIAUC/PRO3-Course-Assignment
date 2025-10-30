@@ -17,6 +17,7 @@ message AnimalDTO{
 // Station 1 START
 message RegisterAnimalRequest{
   int32 weight = 1;
+  string origin = 2;
 }
 
 service Station1Service{

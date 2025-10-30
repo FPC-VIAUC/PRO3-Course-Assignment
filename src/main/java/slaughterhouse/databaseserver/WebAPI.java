@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import slaughterhouse.domain.Animal;
@@ -32,5 +33,10 @@ public class WebAPI{
             animalsFromDate.add(animal);
         }
     return new ResponseEntity (animalsFromDate, HttpStatus.OK);
+  }
+
+  @GetMapping("/animals/{id}")
+  public ResponseEntity getAnimal(@PathVariable int id){
+    return new ResponseEntity (dao.getAnimal(id), HttpStatus.OK);
   }
 }

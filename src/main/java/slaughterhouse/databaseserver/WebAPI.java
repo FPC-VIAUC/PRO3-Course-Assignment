@@ -9,45 +9,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import slaughterhouse.domain.Animal;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class WebAPI{
   @Autowired
   private DatabaseDAO dao;
 
-  @GetMapping("/hello")
-  public ResponseEntity getHello(){
-    return new ResponseEntity (dao.getAnimal(1), HttpStatus.OK);
-  }
-
 
   @GetMapping("/animals")
-  public ResponseEntity<List<Animal>> getAnimalsByOrigin(@RequestParam("origin") String origin){
-    List<Animal> animals = new ArrayList<>();
+  public ResponseEntity<List<Animal>> getAnimals(@RequestParam(value = "origin", required = false) String origin, @RequestParam(value = "date", required = false) String date){
+    List<Animal> allAnimals = dao.getAnimals();
 
-    for (Animal animal : dao.getAnimals()) {
-      if(animal.getOrigin().equalsIgnoreCase(origin)){
-        animals.add(animal);
-      }
-
-    }
-
-    return new ResponseEntity<List<Animal>> (animals, HttpStatus.OK);
-  }
-
-  @GetMapping("/animals")
-  public ResponseEntity<List<Animal>> getAnimalsFromDate(@RequestParam("date") String date)
-  {
-    List<Animal> animalsFromDate = new ArrayList<>();
-    for (Animal animal : dao.getAnimals())
-        {
-          if (animal.getDate().toString().equals(date))
-            animalsFromDate.add(animal);
-        }
-    return new ResponseEntity (animalsFromDate, HttpStatus.OK);
+    List<Animal> filteredAnimals = allAnimals.stream()
+        .filter(animal -> origin == null || animal.getOrigin().equalsIgnoreCase(origin))
+        .filter(animal -> date == null || animal.getDate().toString().equals(date))
+        .toList();
+    return new ResponseEntity<List<Animal>>(filteredAnimals, HttpStatus.OK);
   }
 
   @GetMapping("/animals/{id}")

@@ -31,7 +31,8 @@ public class WebAPI{
   }
 
   @GetMapping("/animals/{id}")
-  public ResponseEntity getAnimal(@PathVariable int id){
-    return new ResponseEntity (dao.getAnimal(id), HttpStatus.OK);
+  public ResponseEntity<Animal> getAnimal(@PathVariable int id)
+  {
+    return new ResponseEntity<Animal> (dao.getAnimal(id), HttpStatus.OK);
   }
 }

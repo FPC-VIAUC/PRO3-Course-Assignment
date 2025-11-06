@@ -4,9 +4,8 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.hateoas.RepresentationModel;
 
-public class Animal extends RepresentationModel<Animal>{
+public class Animal{
   private int id;
   private int weight;
   private String origin;
